@@ -10,7 +10,7 @@ export default function Input({
   placeholder = ""
 }) {
   return (
-    <form onSubmit={() => onSubmit}>
+    <form onSubmit={onSubmit}>
       <input
         placeholder={placeholder}
         type="text"
