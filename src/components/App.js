@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.scss";
 
-import NoteHeader from "../containers/NoteHeader";
+import NoteSection from "../containers/NoteSection";
 
 function App() {
   return (
     <div className="App">
-      <NoteHeader />
+      <NoteSection />
     </div>
   );
 }
