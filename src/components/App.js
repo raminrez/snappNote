@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.scss";
 
+import NoteHeader from "../containers/NoteHeader";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Note Application</h1>
-      </header>
+      <NoteHeader />
     </div>
   );
 }
