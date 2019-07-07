@@ -18,9 +18,9 @@ const doDeleteNote = id => ({
   note: { id }
 });
 
-const doEditNot = (id, value) => ({
+const doEditNote = (id, value) => ({
   type: NOTE_EDIT,
   note: { id, value }
 });
 
-export { doAddNote, doDeleteNote, doEditNot };
+export { doAddNote, doDeleteNote, doEditNote };
