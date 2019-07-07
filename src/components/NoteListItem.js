@@ -7,17 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 
-const style = {
-  image: {
-    width: "16px",
-    height: "16px",
-    alignContent: "center",
-    justifyContent: "center",
-    padding: 0,
-    margin: 0
-  }
-};
-
 export default function NoteItem({ note, onDelete, onEdit }) {
   return (
     <div className="note-item">
