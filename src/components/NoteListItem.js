@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import "./NoteListItem.scss";
 import { delete_icon, edit_icon } from "../assets/icon/png";
 import Button from "./Button";
