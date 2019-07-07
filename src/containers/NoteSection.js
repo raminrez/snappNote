@@ -6,7 +6,7 @@ import Input from "../components/Input";
 
 import { getNotes } from "../selectors/note";
 import { doAddNote, doEditNote, doDeleteNote } from "../actions/note";
-import NoteList from "./NoteList";
+import NoteList from "../components/NoteList";
 
 class NoteSection extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class NoteSection extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.addNote = this.addNote.bind(this);
+    this.editNote = this.editNote.bind(this);
     this.onButtonClick = this.onButtonClick.bind(this);
   }
 
@@ -30,22 +31,36 @@ class NoteSection extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-    const { value } = this.state;
-    this.addNote(value);
+    this.addNote();
   }
 
   onButtonClick() {
-    this.addNote(this.state.value);
+    this.addNote();
   }
 
-  addNote(value) {
-    if (value) {
+  addNote() {
+    const { editId, isEditing, value } = this.state;
+    if (isEditing) {
+      if (value) {
+        this.props.edit(editId, value);
+      }
+    } else if (value) {
       this.props.add(value);
-      this.setState({
-        value: "",
-        isEditing: false
-      });
     }
+    this.setState({
+      value: "",
+      isEditing: false,
+      editId: null
+    });
+  }
+
+  editNote(note) {
+    const { id, value } = note;
+    this.setState({
+      isEditing: true,
+      editId: id,
+      value
+    });
   }
 
   render() {
@@ -63,7 +78,11 @@ class NoteSection extends Component {
           />
           <Button onClick={this.onButtonClick}>Submit</Button>
         </div>
-        <NoteList notes={this.props.notes} />
+        <NoteList
+          notes={this.props.notes}
+          deleteNote={id => this.props.delete(id)}
+          editNote={this.editNote}
+        />
       </div>
     );
   }
